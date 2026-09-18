@@ -1,0 +1,83 @@
+// passages.js
+// Fallback passage bank used when the backend is unreachable, and the
+// source of truth for Practice mode categories on the client.
+
+export const generalPassages = [
+  'The quick brown fox jumps over the lazy dog while the sun sets slowly behind the distant mountains.',
+  'Typing quickly is a skill that improves with steady practice and a calm, focused mind.',
+  'A good typist keeps their eyes on the screen instead of glancing down at the keyboard every few seconds.',
+  'The old lighthouse stood alone on the rocky cliff, guiding ships safely through the foggy night.',
+  'Learning to type without looking at your hands takes patience, but the payoff is well worth the effort.',
+  'Rain tapped gently against the window as she finished the last page of her favorite novel.',
+  'Consistency matters more than speed when you are first learning how to type accurately.',
+  'The market was full of colorful stalls selling fresh fruit, handmade jewelry, and warm bread.',
+  'Every keystroke you make either builds good habits or reinforces bad ones, so practice with care.',
+  'The train pulled into the station just as the first light of dawn touched the horizon.',
+  'A well organized desk can make it much easier to focus on the task sitting in front of you.',
+  'Mountains rose sharply from the valley floor, their peaks dusted with the season first snow.',
+  'Reading a book before bed is a simple habit that can improve both focus and sleep quality.',
+  'The chef carefully plated the dish, adding a final drizzle of sauce before sending it to the table.',
+  'Programmers often say that clean code is easier to read than it is to write in the first place.',
+  'The garden bloomed with tulips and daffodils, filling the air with a soft, sweet fragrance.',
+  'Practicing a musical instrument every day builds muscle memory in a way that mirrors typing practice.',
+  'The library was silent except for the occasional rustle of pages and the hum of the ventilation system.',
+  'A sudden gust of wind scattered the papers across the office floor before anyone could react.',
+  'Patience and repetition are the two ingredients most likely to turn a beginner into an expert.',
+  'The hikers paused at the summit to take in the view before beginning their long descent.',
+  'Good typing posture protects your wrists and can help you type faster over long sessions.',
+];
+
+export const practiceCategories = {
+  easy: [
+    'The cat sat on the mat and looked out the window.',
+    'I like to eat apples and bananas every morning.',
+    'The sun is bright and the sky is blue today.',
+    'She has a small dog that likes to run and play.',
+    'We walked to the park and sat under a big tree.',
+  ],
+  medium: [
+    'Learning a new language requires daily practice, patience, and a willingness to make mistakes.',
+    'The committee spent several hours debating the best way to allocate the remaining budget.',
+    'Traveling to unfamiliar places often teaches us more about ourselves than we expect.',
+    'The recipe called for three cups of flour, two eggs, and a pinch of salt.',
+    'Effective communication depends on listening as much as it depends on speaking clearly.',
+  ],
+  hard: [
+    'Notwithstanding the ambiguity of the contractual language, the arbitrator ruled in favor of the plaintiff.',
+    'The juxtaposition of impressionist brushwork against a rigidly geometric background unsettled early critics.',
+    'Quantum entanglement suggests that two particles can remain correlated regardless of the distance separating them.',
+    'The bureaucratic labyrinth of overlapping jurisdictions made even simple permit approvals extraordinarily slow.',
+    'Her dissertation examined the socioeconomic ramifications of rapid urbanization in postwar industrial cities.',
+  ],
+  programming: [
+    'function calculateSum(a, b) { return a + b; } console.log(calculateSum(2, 3));',
+    'const users = data.filter(user => user.active).map(user => user.name);',
+    'for (let i = 0; i < array.length; i++) { total += array[i]; }',
+    'class Node { constructor(value) { this.value = value; this.next = null; } }',
+    "if (response.ok) { const data = await response.json(); return data; } else { throw new Error('Request failed'); }",
+  ],
+  quotes: [
+    'The only way to do great work is to love what you do.',
+    'In the middle of difficulty lies opportunity.',
+    'Simplicity is the ultimate sophistication.',
+    'The journey of a thousand miles begins with a single step.',
+    'What we think, we become.',
+  ],
+  technology: [
+    'Cloud computing allows companies to scale their infrastructure without investing in physical servers.',
+    'Machine learning models improve their accuracy by training on increasingly large datasets.',
+    'Open source software encourages collaboration among developers from all around the world.',
+    'Cybersecurity teams work around the clock to defend networks against evolving threats.',
+    'Modern smartphones pack more computing power than the systems that guided early space missions.',
+  ],
+};
+
+export function randomGeneralPassage() {
+  return generalPassages[Math.floor(Math.random() * generalPassages.length)];
+}
+
+export function randomCategoryPassage(category) {
+  const pool = practiceCategories[category];
+  if (!pool || pool.length === 0) return randomGeneralPassage();
+  return pool[Math.floor(Math.random() * pool.length)];
+}
